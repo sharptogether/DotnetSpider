@@ -86,6 +86,19 @@ namespace Java2Dotnet.Spider.Core
 			}
 		}
 
+		public bool ExistExtra(string key)
+		{
+			lock (this)
+			{
+				if (Extras == null)
+				{
+					return false;
+				}
+
+				return Extras.ContainsKey(key);
+			}
+		}
+
 		public Request PutExtra(string key, dynamic value)
 		{
 			lock (this)
